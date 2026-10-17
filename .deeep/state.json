@@ -1,0 +1,18 @@
+{
+  "feature": "standup-journal",
+  "shortname": "standup-jo",
+  "phase": "ready",
+  "tasks": [
+    {
+      "id": "standup-jo-1",
+      "title": "** One-line description of the task.",
+      "difficulty": "easy",
+      "model": "** qwen2.5-coder:7b",
+      "deps": [
+        "**"
+      ],
+      "details": "** Complete, self-contained instructions: files to touch, expected behavior, interfaces, edge cases. A worker agent executes this with no other context.",
+      "status": "pending"
+    }
+  ]
+}
