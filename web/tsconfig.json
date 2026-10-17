@@ -1,0 +1,1 @@
+{"compilerOptions":{"strict":true,"jsx":"react-jsx","moduleResolution":"bundler","target":"es2020","allowJs":true,"skipLibCheck":true,"esModuleInterop":true,"allowSyntheticDefaultImports":true,"module":"es2020","resolveJsonModule":true,"isolatedModules":true,"skipProjectOverride":true,"noEmit":true,"baseUrl":".","paths":{"src/*":"src/*"}},"include":["src/**/*"]}
