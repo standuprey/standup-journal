@@ -1,5 +1,10 @@
-## Prereqs\n- Deno\n- Node/npm (for vite deps)\n- wrangler (via `npm i -g wrangler` or `npx wrangler`)
-## Create D1 database\n
+## Prereqs
+
+- Deno
+- Node/npm (for vite deps)
+- wrangler (via `npm i -g wrangler` or `npx wrangler`)
+
+## Create D1 database
 ```
 wrangler d1 create standup-journal-db
 ```
