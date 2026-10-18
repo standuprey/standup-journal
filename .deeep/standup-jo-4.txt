@@ -1,0 +1,6 @@
+
+=== standup-jo-4 — 2026-10-17T23:15:03.284Z (model ollama/qwen3:4b-instruct) ===
+
+[tools: bash]
+
+[tools: read]

@@ -16,7 +16,7 @@ Open questions resolved: one entry per day (upsert), local browser date as key, 
 
 ### standup-jo-1
 - **Difficulty:** easy
-- **Model:** qwen2.5-coder:7b
+- **Model:** qwen3:4b-instruct
 - **Depends on:** none
 - **Summary:** Scaffold project config: deno.json, wrangler.jsonc, D1 schema, .gitignore, README stub.
 - **Details:** Repo root is `/home/standup/Projects/standup-journal` (currently only README.md). Create:
@@ -31,7 +31,7 @@ Open questions resolved: one entry per day (upsert), local browser date as key, 
 
 ### standup-jo-2
 - **Difficulty:** medium
-- **Model:** qwen2.5-coder:7b
+- **Model:** qwen3:4b-instruct
 - **Depends on:** standup-jo-1
 - **Summary:** Worker API: auth check + CRUD endpoints over D1 + types, with deno unit tests using an in-memory stub.
 - **Details:** Create two files.
@@ -50,7 +50,7 @@ Open questions resolved: one entry per day (upsert), local browser date as key, 
 
 ### standup-jo-3
 - **Difficulty:** medium
-- **Model:** qwen2.5-coder:7b
+- **Model:** qwen3:4b-instruct
 - **Depends on:** standup-jo-1
 - **Summary:** Frontend scaffold: Vite + React + TS + Tailwind v4 + lucide-react under `web/`.
 - **Details:** Create a `web/` directory with a minimal Vite React-TS project (do NOT use `npm create` interactive scaffolding; write files directly, no `npm install` needed to author them):
@@ -65,7 +65,7 @@ Open questions resolved: one entry per day (upsert), local browser date as key, 
 
 ### standup-jo-4
 - **Difficulty:** easy
-- **Model:** qwen2.5-coder:7b
+- **Model:** qwen3:4b-instruct
 - **Depends on:** standup-jo-3
 - **Summary:** API client module + auth gate (password prompt once, persisted in localStorage).
 - **Details:** In `web/src/`:
@@ -76,7 +76,7 @@ Open questions resolved: one entry per day (upsert), local browser date as key, 
 
 ### standup-jo-5
 - **Difficulty:** medium
-- **Model:** qwen2.5-coder:7b
+- **Model:** qwen3:4b-instruct
 - **Depends on:** standup-jo-3
 - **Summary:** EntryForm component: 0–5 star ratings per dimension plus goal and memory textareas with morning/evening sections.
 - **Details:** Create `web/src/components/EntryForm.tsx` and `web/src/components/RatingStars.tsx`.
@@ -86,7 +86,7 @@ Open questions resolved: one entry per day (upsert), local browser date as key, 
 
 ### standup-jo-6
 - **Difficulty:** medium
-- **Model:** qwen2.5-coder:7b
+- **Model:** qwen3:4b-instruct
 - **Depends on:** standup-jo-4, standup-jo-5
 - **Summary:** Entry list view + App wiring: create/today, edit, delete, loading and error states.
 - **Details:** Rewrite `web/src/App.tsx` and create `web/src/components/EntryList.tsx`.
@@ -96,7 +96,7 @@ Open questions resolved: one entry per day (upsert), local browser date as key, 
 
 ### standup-jo-7
 - **Difficulty:** easy
-- **Model:** qwen2.5-coder:7b
+- **Model:** qwen3:4b-instruct
 - **Depends on:** standup-jo-1
 - **Summary:** DEPLOY.md: step-by-step deployment instructions for the client.
 - **Details:** Create `DEPLOY.md` at repo root. Sections:

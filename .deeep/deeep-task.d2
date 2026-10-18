@@ -1,0 +1,27 @@
+# Durable per-task pipeline. On /deeep go, resume the saved stage, not the top.
+direction: down
+classes: {
+  script: {style.fill: "#DBEAFE"; style.stroke: "#1D4ED8"}
+  model: {style.fill: "#DCFCE7"; style.stroke: "#15803D"}
+  decision: {shape: diamond; style.fill: "#DBEAFE"}
+  paused: {style.fill: "#FEE2E2"; style.stroke: "#B91C1C"}
+}
+prepare: "SCRIPT — checkpoint: prepare\nNew task branch and worktree from fetched origin/main\nRetries reuse their existing branch / worktree\nShared Git operations are serialized; main checkout untouched" {class: script}
+implement: "WORKER MODEL — checkpoint: implement\nImplement one task; run checks; leave edits uncommitted\nSeparate supervised pi process in the task worktree\nNo git handling assigned to the model" {class: model}
+receipt: "SCRIPT — durable worker receipt\nAfter disconnect: adopt live worker or consume its finished result\nInterrupted attempts retain partial files for retry" {class: script}
+valid: "Worker completed\nwithout errors?" {class: decision}
+commit: "SCRIPT — checkpoint: commit\nRequire changes; git add / commit with task trailer\nRecover an already-created commit after a crash\nDo not re-run a successfully completed worker" {class: script}
+publish: "SCRIPT — checkpoint: publish\nPush branch; find existing PR or create one\nVerify publication; save commit SHA and PR URL\nRetry publication without duplicate implementation or PR" {class: script}
+done: "SCRIPT — checkpoint: complete\nMark task done only after publication is confirmed\nRemove worktree only if safe; never force-delete edits" {class: script}
+return: "Return to scheduler\nTask done is distinct from PR merged\nDependent tasks still require scripted merge verification" {class: script}
+retain: "STOP / FAILURE\nPersist stage and error; keep worktree and files\n/deeep go resumes / retries the saved stage\nNo unconditional branch reset or destructive cleanup" {class: paused}
+
+prepare -> implement -> receipt -> valid
+valid -> commit: yes
+valid -> retain: no
+prepare -> retain: setup error or stop
+commit -> publish: commit saved / reconciled
+commit -> retain: commit error or stop
+publish -> done: push and PR verified
+publish -> retain: network / publication error or stop
+done -> return
