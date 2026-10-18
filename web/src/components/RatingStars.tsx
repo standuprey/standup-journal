@@ -1,10 +1,11 @@
-import { Button, Tooltip } from 'lucide-react';
+import { Star, X } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 interface RatingStarsProps {
   label: string;
   value: number;
   onChange(n: number): void;
-  icon: React.ComponentType<any>;
+  icon: LucideIcon;
 }
 
 export const RatingStars = ({ label, value, onChange, icon: Icon }: RatingStarsProps) => {
@@ -45,8 +46,3 @@ export const RatingStars = ({ label, value, onChange, icon: Icon }: RatingStarsP
     </div>
   );
 };
-
-// Note: Star and X are assumed exports from lucide-react
-// Verified against lucide-react docs: Star, X are valid
-// Icon types: Sparkles, Zap, MoonStar, Utensils, Stethoscope, Eye, ShieldCheck, Sunrise, Moon, Save, Calendar are valid
-// All used in EntryForm.tsx.
